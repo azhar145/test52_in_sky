@@ -560,7 +560,7 @@ def s6(df,u33,df7a):
 
 
 
-    if v5 != 0:
+    if v5 != 0:  # (if sell/v5 !=0 )
         
         
         for z in range(g43, df.index[-1]):
@@ -578,7 +578,9 @@ def s6(df,u33,df7a):
             
     ##        sell_condition = (df[mm3].loc[z] < 0 and (df[mm3].loc[z] - df[mm3].shift(1).loc[z] < 00) and df['Close'].loc[z] > v5)
 
-            if sell_condition and i2=='51' and g43 != None:                
+##            if sell_condition and i2=='51' and g43 != None:                
+##                sell_signal_counter_sig==sell_signal_counter
+            if sell_condition:                
                 sell_signal_counter_sig==sell_signal_counter
                 
 
@@ -657,8 +659,14 @@ def s6(df,u33,df7a):
         print('\n')
         if v4-v5 > 0:
             print('================= Profit=',round((v4-v5),2),df)
+            print('Buy_condition=',buy_condition)
+            print('Sell_condition=',sell_condition)
+            print(df[['Close','ticker','s3','s2','signal']])
         else:
             print('================= Loss=',round((v4-v5),2),df)
+            print('Buy_condition=',buy_condition)
+            print('Sell_condition=',sell_condition)
+            print(df[['Close','ticker','s3','s2','signal']])
         print('\n')
 
         print('\n\n\n\n\n')
@@ -671,7 +679,7 @@ def s6(df,u33,df7a):
         n3=87
         print(v5,'v5 -----------------------------------------')
         if v5 != 0:
-            s5d={'stragety':'2','Date':str(u33),'ticker':s45,'Buy_at':v4,'Sell_at':v5,'Profit':v5-v4,\
+            s5d={'stragety':'2','Date':str(u33),'ticker':s45,'Buy_at':v5,'Sell_at':v4,'Profit':v4-v5,\
              'b_Close_vwap':s48,'b_macd':s47,'b_mom':s46,'b_VZO':s49,'b_CCI':s50}
             df7a=df7a.append(s5d,ignore_index=True)
 
